@@ -16,6 +16,7 @@ menu, nav, output, ruby, section, summary,
 time, mark, audio, video{margin: 0; padding: 0; border: 0; font-size: 100%}
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section{display: block}
+h1, h2, h3, h4, h5, h6{font-weight: normal}
 body{font-family: 'Noto Sans KR', '맑은 고딕', Dotum, "굴림", Gulim, sans-serif; color: #666; font-weight: normal; background: #f6f6f6; font-size: 14px}
 ol, ul{list-style: none;}
 table{border-collapse: collapse; border-spacing: 0;}

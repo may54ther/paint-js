@@ -11,7 +11,7 @@
 > - mouseenter
 >   대상에 마우스 진입 시
 > - mousedown
->   대상에 마우스 클릭 시
+>   대상을 클릭하고 있을 때
 > - mouseup
 >   대상에 마우스 클릭 종료 시
 > - mouseleave
