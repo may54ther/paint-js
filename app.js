@@ -1,5 +1,8 @@
 const canvas = document.getElementById("paintCanvas");
 const ctx = canvas.getContext("2d");
+const colors = document.getElementsByClassName("paintColor");
+const range = document.getElementById("paintRange");
+const clear = document.getElementById("paintClear");
 
 canvas.width = 700;
 canvas.height = 700;
@@ -13,6 +16,7 @@ function onMouseMove(event) {
   const y = event.offsetY;
 
   if (!painting) {
+    ctx.beginPath();
     ctx.moveTo(x, y);
   } else {
     ctx.lineTo(x, y);
@@ -28,16 +32,28 @@ function stopPainting() {
   painting = false;
 }
 
-if (canvas) {
-  canvas.addEventListener("mousemove", onMouseMove);
-  canvas.addEventListener("mousedown", startPainting);
-  canvas.addEventListener("mouseup", stopPainting);
-  canvas.addEventListener("mouseleave", stopPainting);
+function handleColorClick(event) {
+  const color = event.target.style.backgroundColor;
+  ctx.strokeStyle = color;
 }
 
-//mouseenter : 대상에 마우스가 진입시
-//mousemove : 대상에 마우스가 진입과 이동시
-//event.offsetX, Y : 이벤트 대상에 위치한 마우스의 좌표(페이지가 아닌!)
-//event.clientX, Y : 현재 보이는 브라우저 화면, 스크롤은 무시
-//event.pageX, Y : 전체 문서 기준, 스크롤 포함
-//event.screenX, Y : 브라우저X 모니터 화면 기준
+function handleRangeChange(event) {
+  const size = event.target.value;
+  ctx.lineWidth = size;
+}
+
+if (canvas) {
+  canvas.addEventListener("mousemove", onMouseMove); //대상에 마우스 진입+이동
+  canvas.addEventListener("mousedown", startPainting); //마우스 클릭
+  canvas.addEventListener("mouseup", stopPainting); //마우스 클릭 종료
+  canvas.addEventListener("mouseleave", stopPainting); //대상에서 마우스가 나감
+}
+
+Array.from(colors).forEach(color => color.addEventListener("click", handleColorClick));
+clear.addEventListener("click", function() {
+  ctx.beginPath();
+});
+
+if (range) {
+  range.addEventListener("input", handleRangeChange);
+}
