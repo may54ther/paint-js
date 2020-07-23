@@ -1,7 +1,7 @@
-# Paint-js
+# js-paint
 
 노마드코더의 자바스크립트 강의를 보고 만든 클론 코딩
-[[바로가기]](https://may54ther.github.io/paintjs)
+[[바로가기]](https://may54ther.github.io/js-paint)
 
 <br>
 
